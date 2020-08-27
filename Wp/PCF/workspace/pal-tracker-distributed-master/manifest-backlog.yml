@@ -1,0 +1,17 @@
+---
+applications:
+- name: tracker-backlog
+  instances: 1
+  memory: 256M
+  routes:
+  - route: backlog-skb.cfapps.io
+  path: Applications/BacklogServer/bin/Release/netcoreapp2.1/publish
+  env:
+    GRANT_TYPE: client_credentials
+  services:
+  - tracker-backlog-database
+  - tracker-service-registry
+  - tracker-circuit-breaker-dashboard
+  - tracker-amqp
+  - tracker-sso
+  - tracker-config-server
